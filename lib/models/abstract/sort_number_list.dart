@@ -1,12 +1,12 @@
 // Dart imports:
 import 'dart:collection';
 
-// Project imports:
-import 'package:flutter_sort/models/abstract/sort_number.dart';
+abstract class SortNumberList<T extends List<U>, U> extends ListBase<U> {
+  SortNumberList();
 
-abstract class SortNumberList<E> extends ListBase<E> {
-  List<SortNumber> numbers;
-  SortNumberList(this.numbers);
+  late List<U> numbers;
+
+  SortNumberList.from(this.numbers);
 
   @override
   get length => numbers.length;
@@ -17,10 +17,10 @@ abstract class SortNumberList<E> extends ListBase<E> {
   }
 
   @override
-  E operator [](int index) => numbers[index] as E;
+  U operator [](int index) => numbers[index];
 
   @override
-  void operator []=(int index, E value) {
-    numbers[index] = value as SortNumber;
+  void operator []=(int index, U value) {
+    numbers[index] = value;
   }
 }

@@ -1,5 +1,7 @@
-abstract class SortNumber {
-  int value;
+abstract class SortNumber<T> {
+  late int value;
 
-  SortNumber(this.value);
+  SortNumber();
+
+  SortNumber.from(this.value);
 }

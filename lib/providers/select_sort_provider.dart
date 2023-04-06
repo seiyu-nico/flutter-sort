@@ -1,18 +1,24 @@
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import 'package:flutter_sort/models/select_sort/select_sort_number.dart';
 import 'package:flutter_sort/models/select_sort/select_sort_number_list.dart';
+import 'package:flutter_sort/providers/abstract/sort_provider.dart';
 
-class SelectSortNotifier extends ChangeNotifier {
-  SelectSortNotifier(this.numbers);
+class SelectSortNotifier
+    extends SortNotifier<SelectSortNumberList, SelectSortNumber> {
+  SelectSortNotifier() : super();
 
-  // ソート対象の数字のリスト
-  SelectSortNumberList numbers;
+  @override
+  SelectSortNumber fromNumber(int value) {
+    return SelectSortNumber.from(value);
+  }
+
+  @override
+  SelectSortNumberList fromNumberList(List<SelectSortNumber> list) {
+    return SelectSortNumberList.from(list);
+  }
 
   // ソートを実行する
   Future<void> selectionSort() async {
@@ -24,7 +30,7 @@ class SelectSortNotifier extends ChangeNotifier {
       for (int j = i + 1; j < n; j++) {
         numbers[j].check = true;
         notifyListeners();
-        await Future.delayed(const Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 10));
 
         if (numbers[j].value < numbers[minIndex].value) {
           numbers[j].candidate = true;
@@ -33,14 +39,14 @@ class SelectSortNotifier extends ChangeNotifier {
         }
         numbers[j].check = false;
         notifyListeners();
-        await Future.delayed(const Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 10));
       }
 
       numbers[i].current = false;
       numbers[minIndex].fixed = true;
       numbers[minIndex].candidate = false;
       if (minIndex != i) {
-        await Future.delayed(const Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 10));
         numbers.swap(i, minIndex);
       }
       notifyListeners();
@@ -49,17 +55,5 @@ class SelectSortNotifier extends ChangeNotifier {
 }
 
 final selectSortProvider = ChangeNotifierProvider<SelectSortNotifier>((ref) {
-  SelectSortNumberList numbers = SelectSortNumberList([
-    SelectSortNumber(5),
-    SelectSortNumber(3),
-    SelectSortNumber(8),
-    SelectSortNumber(4),
-    SelectSortNumber(1),
-    SelectSortNumber(10),
-    SelectSortNumber(9),
-    SelectSortNumber(7),
-    SelectSortNumber(2),
-    SelectSortNumber(6),
-  ]);
-  return SelectSortNotifier(numbers);
+  return SelectSortNotifier();
 });
