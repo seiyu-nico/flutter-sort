@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:flutter_sort/models/abstract/sort_number.dart';
 
-class SelectSortNumber extends SortNumber {
-  SelectSortNumber(value) : super(value);
+class SelectSortNumber extends SortNumber<SelectSortNumber> {
+  SelectSortNumber() : super();
+
+  SelectSortNumber.from(int numbers) : super.from(numbers);
 
   // この数字がどのような状態かを示すフラグ
   bool check = false; // チェック中

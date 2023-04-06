@@ -10,11 +10,14 @@ import 'package:flutter_sort/providers/select_sort_provider.dart';
 
 class SelectSortScreen extends ConsumerWidget {
   const SelectSortScreen({Key? key}) : super(key: key);
-  Widget buildBar(SelectSortNumber number) {
+
+  final double margin = 1;
+
+  Widget buildBar(constraints, SelectSortNumber number, int length) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 2),
-      width: 20,
-      height: number.value * 20.0,
+      margin: EdgeInsets.symmetric(horizontal: margin),
+      width: (constraints.maxWidth - (length * margin * 2)) / length,
+      height: (constraints.maxHeight / length) * number.value,
       color: number.color,
     );
   }
@@ -22,17 +25,22 @@ class SelectSortScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectSortNotifier = ref.watch(selectSortProvider);
-
+    final int numberLength = selectSortNotifier.numbers.length;
     return Column(
       children: [
         const SizedBox(height: 20),
         Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: selectSortNotifier.numbers
-                .map((number) => buildBar(number))
-                .toList(),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: selectSortNotifier.numbers
+                    .map(
+                        (number) => buildBar(constraints, number, numberLength))
+                    .toList(),
+              );
+            },
           ),
         ),
         const SizedBox(height: 20),
