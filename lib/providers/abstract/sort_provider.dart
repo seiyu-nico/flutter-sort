@@ -13,6 +13,8 @@ abstract class SortNotifier<T extends List<U>, U> extends ChangeNotifier {
 
   T fromNumberList(List<U> list);
 
+  Future<void> sort();
+
   T generateNumbers() {
     final list =
         List<U>.generate(50, (index) => fromNumber(index + 1)).toList();

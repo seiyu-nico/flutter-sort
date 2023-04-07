@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import 'package:flutter_sort/screens/bubble_sort_screen.dart';
-import 'package:flutter_sort/screens/select_sort_screen.dart';
+import 'package:flutter_sort/providers/sort_types_provider.dart';
 
 // Project imports:
 
@@ -21,9 +20,54 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('Selection Sort')),
-        // 現状セレクトソートしか存在しないのでセレクトソートの画面を表示する
-        body: const BubbleSortScreen(),
+        body: const Home(),
       ),
+    );
+  }
+}
+
+class Home extends ConsumerWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final sortTypes = ref.watch(sortTypesProvider);
+
+    return Column(
+      children: [
+        const SizedBox(height: 20),
+        Expanded(
+          child: sortTypes.screen,
+        ),
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DropdownButton<int>(
+                value: sortTypes.selected,
+                items: sortTypes.types.map<DropdownMenuItem<int>>((type) {
+                  return DropdownMenuItem<int>(
+                    value: type['id'],
+                    child: Text(type['text']),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  sortTypes.type = value!;
+                },
+              ),
+              const SizedBox(width: 8),
+              ElevatedButton(
+                onPressed: () async {
+                  await sortTypes.sort(ref);
+                },
+                child: const Text('Sort'),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

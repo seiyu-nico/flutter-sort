@@ -15,7 +15,7 @@ class BubbleSortNumber extends SortNumber<BubbleSortNumber> {
   bool fixed = false; // 確定済みかどうか
   bool candidate = false; // 候補かどうか
 
-  // この数字がどのような状態かによって色を変える
+  @override
   Color get color {
     if (fixed) {
       return Colors.blue;

@@ -20,7 +20,7 @@ class BubbleSortNotifier
     return BubbleSortNumberList.from(list);
   }
 
-  // ソートを実行する
+  @override
   Future<void> sort() async {
     int length = numbers.length;
     for (var i = 1; i < length; i++) {
