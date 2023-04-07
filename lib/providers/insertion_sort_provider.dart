@@ -33,6 +33,7 @@ class InsertionSortNotifier
 
       while (j >= 0 && numbers[j].value > current.value) {
         numbers[j + 1] = numbers[j];
+        numbers[j + 1].candidate = true;
         j = j - 1;
         notifyListeners();
       }
