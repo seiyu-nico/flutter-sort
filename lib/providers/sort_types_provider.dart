@@ -13,7 +13,7 @@ class SortTypesNotifier extends ChangeNotifier {
 
   final _types = [
     {'id': 0, 'text': '選択ソート', 'screen': const SelectSortScreen()},
-    {'id': 1, 'text': 'バブルソート', 'screen': const InsertionSortScreen()},
+    {'id': 1, 'text': '挿入ソート', 'screen': const InsertionSortScreen()},
   ];
 
   int selected = 0;
