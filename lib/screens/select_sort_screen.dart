@@ -15,10 +15,18 @@ class SelectSortScreen extends ConsumerWidget {
 
   Widget buildBar(constraints, SelectSortNumber number, int length) {
     return Container(
+      alignment: Alignment.bottomCenter,
       margin: EdgeInsets.symmetric(horizontal: margin),
       width: (constraints.maxWidth - (length * margin * 2)) / length,
       height: (constraints.maxHeight / length) * number.value,
       color: number.color,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 1),
+        child: Text(
+          number.value.toString(),
+          style: const TextStyle(color: Colors.white),
+        ),
+      ),
     );
   }
 
