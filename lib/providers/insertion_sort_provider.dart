@@ -2,22 +2,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import 'package:flutter_sort/models/bubble_sort/bubble_sort_number.dart';
-import 'package:flutter_sort/models/bubble_sort/bubble_sort_number_list.dart';
+import 'package:flutter_sort/models/insertion_sort/insertion_sort_number.dart';
+import 'package:flutter_sort/models/insertion_sort/insertion_sort_number_list.dart';
 import 'package:flutter_sort/providers/abstract/sort_provider.dart';
 
-class BubbleSortNotifier
-    extends SortNotifier<BubbleSortNumberList, BubbleSortNumber> {
-  BubbleSortNotifier() : super();
+class InsertionSortNotifier
+    extends SortNotifier<InsertionSortNumberList, InsertionSortNumber> {
+  InsertionSortNotifier() : super();
 
   @override
-  BubbleSortNumber fromNumber(int value) {
-    return BubbleSortNumber.from(value);
+  InsertionSortNumber fromNumber(int value) {
+    return InsertionSortNumber.from(value);
   }
 
   @override
-  BubbleSortNumberList fromNumberList(List<BubbleSortNumber> list) {
-    return BubbleSortNumberList.from(list);
+  InsertionSortNumberList fromNumberList(List<InsertionSortNumber> list) {
+    return InsertionSortNumberList.from(list);
   }
 
   @override
@@ -49,6 +49,7 @@ class BubbleSortNotifier
   }
 }
 
-final bubbleSortProvider = ChangeNotifierProvider<BubbleSortNotifier>((ref) {
-  return BubbleSortNotifier();
+final insertionSortProvider =
+    ChangeNotifierProvider<InsertionSortNotifier>((ref) {
+  return InsertionSortNotifier();
 });
