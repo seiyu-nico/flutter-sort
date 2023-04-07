@@ -17,10 +17,6 @@ abstract class SortNotifier<T extends List<U>, U> extends ChangeNotifier {
     final list =
         List<U>.generate(50, (index) => fromNumber(index + 1)).toList();
     list.shuffle();
-
     return fromNumberList(list);
   }
-
-  // サブクラスでオーバーライドする
-  // T generateNumbers();
 }

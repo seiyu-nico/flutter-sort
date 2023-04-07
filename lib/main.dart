@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import 'package:flutter_sort/screens/bubble_sort_screen.dart';
 import 'package:flutter_sort/screens/select_sort_screen.dart';
 
 // Project imports:
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text('Selection Sort')),
         // 現状セレクトソートしか存在しないのでセレクトソートの画面を表示する
-        body: const SelectSortScreen(),
+        body: const BubbleSortScreen(),
       ),
     );
   }
