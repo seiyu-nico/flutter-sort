@@ -15,7 +15,7 @@ class SelectSortNumber extends SortNumber<SelectSortNumber> {
   bool fixed = false; // 確定済みかどうか
   bool candidate = false; // 最小値の候補かどうか
 
-  // この数字がどのような状態かによって色を変える
+  @override
   Color get color {
     if (fixed) {
       return Colors.blue;

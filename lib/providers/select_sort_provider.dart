@@ -20,8 +20,8 @@ class SelectSortNotifier
     return SelectSortNumberList.from(list);
   }
 
-  // ソートを実行する
-  Future<void> selectionSort() async {
+  @override
+  Future<void> sort() async {
     int n = numbers.length;
     for (int i = 0; i < n; i++) {
       int minIndex = i;
