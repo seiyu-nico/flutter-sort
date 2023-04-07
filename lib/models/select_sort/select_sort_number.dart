@@ -17,14 +17,14 @@ class SelectSortNumber extends SortNumber<SelectSortNumber> {
 
   // この数字がどのような状態かによって色を変える
   Color get color {
-    if (current) {
-      return Colors.yellow;
+    if (fixed) {
+      return Colors.blue;
     } else if (candidate) {
       return Colors.orange;
     } else if (check) {
       return Colors.red;
-    } else if (fixed) {
-      return Colors.blue;
+    } else if (current) {
+      return Colors.yellow;
     }
     return Colors.green;
   }
