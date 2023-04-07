@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:flutter_sort/models/abstract/sort_number.dart';
 
-class BubbleSortNumber extends SortNumber<BubbleSortNumber> {
-  BubbleSortNumber() : super();
+class InsertionSortNumber extends SortNumber<InsertionSortNumber> {
+  InsertionSortNumber() : super();
 
-  BubbleSortNumber.from(int numbers) : super.from(numbers);
+  InsertionSortNumber.from(int numbers) : super.from(numbers);
 
   // この数字がどのような状態かを示すフラグ
   bool check = false; // チェック中
