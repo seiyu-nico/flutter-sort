@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import 'package:flutter_sort/screens/bubble_sort_screen.dart';
 import 'package:flutter_sort/screens/insertion_sort_screen.dart';
 import 'package:flutter_sort/screens/select_sort_screen.dart';
 
@@ -14,6 +15,7 @@ class SortTypesNotifier extends ChangeNotifier {
   final _types = [
     {'id': 0, 'text': '選択ソート', 'screen': const SelectSortScreen()},
     {'id': 1, 'text': '挿入ソート', 'screen': const InsertionSortScreen()},
+    {'id': 2, 'text': 'バブルソート', 'screen': const BubbleSortScreen()},
   ];
 
   int selected = 0;
