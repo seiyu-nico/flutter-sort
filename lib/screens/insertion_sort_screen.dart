@@ -13,8 +13,13 @@ class InsertionSortScreen extends SortScreen<InsertionSortNumber> {
   const InsertionSortScreen({Key? key}) : super(key: key);
 
   @override
-  Future<void> sort(ref) async {
+  void sort(ref) {
     ref.read(insertionSortProvider).sort();
+  }
+
+  @override
+  void reset(ref) {
+    ref.read(insertionSortProvider).reset();
   }
 
   @override

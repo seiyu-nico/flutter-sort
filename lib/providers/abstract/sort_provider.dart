@@ -21,4 +21,8 @@ abstract class SortNotifier<T extends List<U>, U> extends ChangeNotifier {
     list.shuffle();
     return fromNumberList(list);
   }
+
+  void reset() {
+    numbers = generateNumbers();
+  }
 }

@@ -30,10 +30,6 @@ class SortTypesNotifier extends ChangeNotifier {
   }
 
   get screen => types[selected]['screen'];
-
-  Future<void> sort(ref) async {
-    types[selected]['screen'].sort(ref);
-  }
 }
 
 final sortTypesProvider = ChangeNotifierProvider<SortTypesNotifier>((ref) {
