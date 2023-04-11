@@ -56,12 +56,13 @@ class Home extends ConsumerWidget {
                 }).toList(),
                 onChanged: (value) {
                   sortTypes.type = value!;
+                  sortTypes.screen.reset(ref);
                 },
               ),
               const SizedBox(width: 8),
               ElevatedButton(
                 onPressed: () async {
-                  await sortTypes.sort(ref);
+                  await sortTypes.screen.sort(ref);
                 },
                 child: const Text('Sort'),
               ),

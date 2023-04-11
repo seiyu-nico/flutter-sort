@@ -11,7 +11,8 @@ abstract class SortScreen<T extends SortNumber> extends ConsumerWidget {
   const SortScreen({Key? key}) : super(key: key);
   final double margin = 1;
 
-  Future<void> sort(ref);
+  void sort(ref);
+  void reset(ref);
 
   Widget buildBar(constraints, T number, int length) {
     return Container(
