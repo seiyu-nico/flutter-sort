@@ -21,7 +21,7 @@ class SelectSortNotifier
   }
 
   @override
-  Future<void> sort() async {
+  Future<void> processing() async {
     int n = numbers.length;
     for (int i = 0; i < n; i++) {
       int minIndex = i;

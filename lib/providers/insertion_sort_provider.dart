@@ -21,7 +21,7 @@ class InsertionSortNotifier
   }
 
   @override
-  Future<void> sort() async {
+  Future<void> processing() async {
     int length = numbers.length;
     for (var i = 1; i < length; i++) {
       var current = numbers[i];
