@@ -13,8 +13,8 @@ class QuickSortScreen extends SortScreen<QuickSortNumber> {
   const QuickSortScreen({Key? key}) : super(key: key);
 
   @override
-  void sort(ref) {
-    ref.read(quickSortProvider).sort();
+  Future<void> sort(ref) async {
+    await ref.read(quickSortProvider).sort();
   }
 
   @override

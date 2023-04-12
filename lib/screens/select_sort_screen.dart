@@ -13,14 +13,16 @@ class SelectSortScreen extends SortScreen<SelectSortNumber> {
   const SelectSortScreen({Key? key}) : super(key: key);
 
   @override
-  void sort(ref) {
-    ref.read(selectSortProvider).sort();
+  Future<void> sort(ref) async {
+    await ref.read(selectSortProvider).sort();
   }
 
   @override
   void reset(ref) {
     ref.read(selectSortProvider).reset();
   }
+
+  get run => (ref) => ref.read(selectSortProvider).run;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

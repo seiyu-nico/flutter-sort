@@ -54,16 +54,22 @@ class Home extends ConsumerWidget {
                     child: Text(type['text']),
                   );
                 }).toList(),
-                onChanged: (value) {
-                  sortTypes.type = value!;
-                  sortTypes.screen.reset(ref);
-                },
+                onChanged: sortTypes.run
+                    ? null
+                    : (value) {
+                        sortTypes.type = value!;
+                        sortTypes.screen.reset(ref);
+                      },
               ),
               const SizedBox(width: 8),
               ElevatedButton(
-                onPressed: () async {
-                  await sortTypes.screen.sort(ref);
-                },
+                onPressed: sortTypes.run
+                    ? null
+                    : () async {
+                        sortTypes.run = true;
+                        await sortTypes.screen.sort(ref);
+                        sortTypes.run = false;
+                      },
                 child: const Text('Sort'),
               ),
             ],
