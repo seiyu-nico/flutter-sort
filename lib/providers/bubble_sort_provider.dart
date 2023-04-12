@@ -23,7 +23,7 @@ class BubbleSortNotifier
   int now = 0;
 
   @override
-  Future<void> processing() async {
+  Future<void> sort() async {
     final length = numbers.length;
     for (int i = 0; i < length - 1; i++) {
       for (int j = 0; j < length - 1 - i; j++) {

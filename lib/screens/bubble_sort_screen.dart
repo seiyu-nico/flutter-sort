@@ -13,8 +13,8 @@ class BubbleSortScreen extends SortScreen<BubbleSortNumber> {
   const BubbleSortScreen({Key? key}) : super(key: key);
 
   @override
-  void sort(ref) {
-    ref.read(bubbleSortProvider).sort();
+  Future<void> sort(ref) async {
+    await ref.read(bubbleSortProvider).sort();
   }
 
   @override

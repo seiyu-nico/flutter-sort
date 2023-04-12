@@ -21,7 +21,7 @@ class QuickSortNotifier
   }
 
   @override
-  Future<void> processing() async {
+  Future<void> sort() async {
     int low = 0;
     int high = numbers.length - 1;
     await quickSort(numbers, low, high);

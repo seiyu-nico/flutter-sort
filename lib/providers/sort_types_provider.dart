@@ -22,6 +22,8 @@ class SortTypesNotifier extends ChangeNotifier {
 
   int selected = 0;
 
+  bool _run = false;
+
   get types => _types;
 
   set type(int value) {
@@ -30,6 +32,14 @@ class SortTypesNotifier extends ChangeNotifier {
   }
 
   get screen => types[selected]['screen'];
+
+  set run(state) {
+    print('ここha?');
+    _run = state;
+    notifyListeners();
+  }
+
+  get run => _run;
 }
 
 final sortTypesProvider = ChangeNotifierProvider<SortTypesNotifier>((ref) {
